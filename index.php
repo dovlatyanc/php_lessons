@@ -39,6 +39,11 @@ $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     <input type="number" name="num" placeholder="Например 123456" required>
     <button type="submit">Узнать среднее арифметическое</button>
   </form>
+     <form action="tasks/task5.php" method="POST">
+    <label>Введите число</label>
+    <input type="number" name="num" placeholder="Например 25" required>
+    <button type="submit">Найти квадратый корень</button>
+  </form>
 </body>
 </html>
 
