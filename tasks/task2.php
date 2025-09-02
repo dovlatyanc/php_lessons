@@ -1,7 +1,7 @@
 <?php
 
 
-echo "ЗАДАЧА 2!<br>";
+echo "ЗАДАЧА 2<br>";
 if(!isset($_POST['submit'])){
 $num = $_POST['num'];
 $isIncreasing = true;

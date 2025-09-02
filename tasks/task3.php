@@ -1,5 +1,5 @@
 <?php
-echo "ЗАДАЧА 3!<br>";
+echo "ЗАДАЧА 3<br>";
 if(!isset($_POST['submit'])){
 $num = $_POST['num'];
 $new_arr=[];
