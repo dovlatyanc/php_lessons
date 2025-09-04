@@ -20,7 +20,7 @@
         $email = $_POST['email'];
 
         // Подключаемся к базе данных
-        $conn = new mysqli("localhost", "root", "", "users_db");
+        $conn = new mysqli("localhost", "root", "", "user_db");
 
         // Проверяем соединение
         if ($conn->connect_error) {

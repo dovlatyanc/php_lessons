@@ -13,7 +13,7 @@
 
     <?php
     // Подключаемся к базе
-    $conn = new mysqli("localhost", "root", "", "users_db");
+    $conn = new mysqli("localhost", "root", "", "user_db");
     if ($conn->connect_error) {
         die("Ошибка подключения: " . $conn->connect_error);
     }
