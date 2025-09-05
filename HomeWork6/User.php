@@ -21,4 +21,9 @@ class User{
         return "Пользователь #{$this->id}: {$this->firstName}
          {$this->lastName} ({$this->email})";
     }
+
+    public function checkPassword($inputPassword) {
+        // password_verify безопасно сравнивает хэшированный пароль с введенным
+        return password_verify($inputPassword, $this->password);
+    }
 }
