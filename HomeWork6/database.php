@@ -1,7 +1,8 @@
 <?php
 
 class Database {
-    private PDO $pdo;
+
+    private $pdo;
 
     public function __construct(){
         try {
@@ -25,7 +26,7 @@ class Database {
     )";
     
     $this->pdo->exec($sql);
-}
+    }
     public function addTestUsers() {
         $statement = $this->pdo->query("SELECT COUNT(*) FROM users");
         if ($statement->fetchColumn() == 0) {
@@ -46,5 +47,17 @@ class Database {
     public function getAllUsers() {
     $statement = $this->pdo->query("SELECT * FROM users ORDER BY id");
     return $statement->fetchAll(PDO::FETCH_ASSOC);
-}
+
+    
+    }
+    public function findUserByEmail($email) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+  
+    public function close() {
+        $this->pdo = null;
+    }
 }
