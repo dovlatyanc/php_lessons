@@ -1,0 +1,10 @@
+.grid{
+    display:inline-grid;
+    grid-template-columns: auto auto;
+   
+}
+
+.wide2{
+    
+    grid-column: 1/3;
+}
