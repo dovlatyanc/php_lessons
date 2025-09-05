@@ -22,6 +22,10 @@ class User{
          {$this->lastName} ({$this->email})";
     }
 
+    public function getFullName(){
+        return "{$this->firstName}  {$this->lastName}";
+    }
+
     public function checkPassword($inputPassword) {
         // password_verify безопасно сравнивает хэшированный пароль с введенным
         return password_verify($inputPassword, $this->password);
