@@ -26,4 +26,25 @@ class Database {
     
     $this->pdo->exec($sql);
 }
+    public function addTestUsers() {
+        $statement = $this->pdo->query("SELECT COUNT(*) FROM users");
+        if ($statement->fetchColumn() == 0) {
+            $adminPassword = password_hash('admin123', PASSWORD_DEFAULT);
+            $testPassword = password_hash('test123', PASSWORD_DEFAULT);
+            
+            $sql = "INSERT INTO users (first_name, last_name, email, password) 
+                    VALUES 
+                    ('Admin', 'Admin', 'admin@example.com', ?),
+                    ('Test', 'Test', 'test@example.com', ?)";
+            
+            //Используется prepare() и execute() — это защита от взлома (SQL-инъекций).
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute([$adminPassword, $testPassword]);
+        }
+    }
+
+    public function getAllUsers() {
+    $statement = $this->pdo->query("SELECT * FROM users ORDER BY id");
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
 }
