@@ -7,7 +7,7 @@ class Database {
     public function __construct(){
         try {
             
-            $this->pdo = new PDO('sqlite:users.sqlite');
+            $this->pdo = new PDO('sqlite:database.sqlite');
              
             // Устанавливаем режим ошибок - исключения
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
