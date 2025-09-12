@@ -7,4 +7,5 @@ abstract class User
     abstract public function canRead(): bool;
     abstract public function canWrite(): bool;
     abstract public function canBan(): bool;
+    abstract public function __toString(): string;
 }
