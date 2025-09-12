@@ -1,9 +1,13 @@
 <?php
+session_start(); 
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
     exit;
+}
+if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
+    die('Ошибка безопасности: неверный CSRF-токен.');
 }
 
 $name = trim($_POST['name'] ?? '');

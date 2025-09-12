@@ -1,8 +1,10 @@
 <?php
 
 function showForm(array $task, bool $isNew): void {
+    $csrfToken = generateCsrfToken();
     ?>
     <form action="<?= $isNew ? 'insert.php' : 'update.php' ?>" method="post">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>" />
         <?php if (!$isNew): ?>
             <input type="hidden" name="id" value="<?= htmlspecialchars($task['id']) ?>" />
         <?php endif; ?>

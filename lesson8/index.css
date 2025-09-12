@@ -8,3 +8,18 @@ body {
     sans-serif;
     margin: 20px;
  }
+
+.confirm-box { 
+    padding: 20px;
+     border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9; 
+    }
+    
+input[type="submit"] {
+    background: #dc3545;
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
