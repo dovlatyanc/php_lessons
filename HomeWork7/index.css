@@ -1,0 +1,16 @@
+body { 
+    font-family: Arial,
+    sans-serif;
+    margin: 40px;
+     
+}
+.user-info {
+     background: #ffffff; 
+     padding: 20px; 
+     border-radius: 8px;
+    margin-bottom: 20px;    
+}
+.label { 
+    font-weight:bold;
+    color: #000000;
+ }
