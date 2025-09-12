@@ -1,27 +1,53 @@
 <?php
-//create or edit
 
-function showForm(array $task,bool $isNew){
-    echo '<form action = " ' . ($isNew ? 'insert.php':'update.php') . '" method = "post">';
+function showForm(array $task, bool $isNew): void {
+    ?>
+    <form action="<?= $isNew ? 'insert.php' : 'update.php' ?>" method="post">
+        <?php if (!$isNew): ?>
+            <input type="hidden" name="id" value="<?= htmlspecialchars($task['id']) ?>" />
+        <?php endif; ?>
 
- 
-        if(!$isNew)
-            echo '<input type ="hidden" name="name" value ="" ' . htmlentities($task['id']) . '" />';
+        <div>
+            <label for="name">Название:</label>
+            <input type="text" 
+                   id="name" 
+                   name="name" 
+                   value="<?= htmlspecialchars($task['name'] ?? '') ?>" 
+                   required />
+        </div>
 
-        echo '<div>Название:</div>';
-        echo '<input type ="text" name="name" value ="" ' . htmlentities($task['name']) . '" />';
+        <div>
+            <label for="due">Срок выполнения:</label>
+            <input type="date" 
+                   id="due" 
+                   name="due" 
+                   value="<?= htmlspecialchars($task['due'] ?? '') ?>" />
+        </div>
 
-        echo '<div>Срок:</div>';
-        echo '<input type ="date" name="name" value ="" ' . htmlentities($task['due']) . '" />';
+        <div>
+            <label for="priority">Приоритет (1–5):</label>
+            <input type="number" 
+                   id="priority" 
+                   name="priority" 
+                   min="1" 
+                   max="5" 
+                   value="<?= htmlspecialchars($task['priority'] ?? '') ?>" 
+                   required />
+        </div>
 
-        echo '<div>Приоритет:</div>';
-        echo '<input type ="number"min="1" max ="5" name="name" value ="" ' . htmlentities($task['prioryty']) . '" />';
+        <div>
+            <label for="description">Описание:</label>
+                <div>
+                    <textarea id="description" 
+                        name="description" 
+                        rows="4" 
+                        cols="50"><?= htmlspecialchars($task['description'] ?? '') ?></textarea>
+                </div>
+        </div>
 
-        echo '<div>Описание:</div>';
-        echo '<input type ="textarea" name="name" value ="" ' . htmlentities($task['description']) . '" />';
-
-        echo '<div>';
-             echo '<input type ="submit"  value="' . ($isNew ? 'Создать':'Сохранить') .'" />';
-        echo '</div>';
-    echo '</form>';
+        <div>
+            <input type="submit" value="<?= $isNew ? 'Создать' : 'Сохранить' ?>" />
+        </div>
+    </form>
+    <?php
 }
