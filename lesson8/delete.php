@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Ошибка безопасности: неверный CSRF-токен.');
     }
 
-    $id = $_POST['id'] ?? null;
+    $id = $_POST['d'] ?? null;
     if (!$id) {
         die('Некорректный ID задачи.');
     }
