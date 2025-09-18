@@ -12,28 +12,33 @@
 
         <?php 
             require_once 'db.php';
+            require_once 'Task.php';
+
             $pdo = getPDO();
-            $stmt =$pdo->query('select *  from tasks');
+
+            $stmt = $pdo->query ('select * from tasks');
+            $stmt->setFetchMode (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Task::class);
+            $tasks = $stmt->fetchAll ();
 
             echo '<div class = "grid">';
-            while($task = $stmt->fetch(PDO::FETCH_ASSOC)){
+           foreach ($tasks as $task) {
 
-         
-                echo "<div> {$task['name']}</div>";
-                echo "<div> {$task['due']}</div>";
-                echo "<div> {$task['prioryty']}</div>";
-                echo "<div> {$task['description']}</div>";
-                echo "<div> <a href =\"edit.php?taskId={$task['id']}\">Редактировать</a></div>";
+                echo "<div><a href=\"showTask.php?taskId={$task->id}\">{$task->name}</a></div>";
+                echo "<div> {$task->due}</div>";
+                echo "<div> {$task->priority}</div>";
+                echo "<div> {$task->description}</div>";
+                echo "<div> <a href =\"edit.php?taskId={$task->id}\">Редактировать</a></div>";
                 echo "<div> <a onClick=\" return confirm('Точно удалить?');\"
-                 href =\"delete.php?taskId={$task['id']}\">Удалить</a></div>";
+                 href =\"delete.php?taskId={$task->id}\">Удалить</a></div>";
             }
             echo '</div>';
         ?>
         <h2> Добавить задачу</h2>
         <?php 
-        require_once 'form.php';
-        $newTask = ['name'=>'','due'=>'','prioryty'=>'','description'=>''];
-        showForm($newTask, isNew:true);
+             require_once 'form.php';
+    
+            $newTask = new Task ();
+            showForm ($newTask, isNew: true);
         ?>
     </body>
 </html>

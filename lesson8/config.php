@@ -1,6 +1,8 @@
 <?php
+class Config {
 
-const DB_HOST = 'localhost';
-const DB_USER = 'root';
-const DB_PASSWORD = '';
-const DB_NAME = 'pv311';
+    public const HOST = 'localhost';
+    public const USER = 'root';
+    public const PASSWORD = '';
+    public const NAME = 'pv311';
+}

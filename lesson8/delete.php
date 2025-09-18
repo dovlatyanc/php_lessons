@@ -42,9 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Ошибка безопасности: неверный CSRF-токен.');
     }
 
-    $id = $_POST['d'] ?? null;
+    $id = $_POST['id'] ?? null;
     if (!$id) {
         die('Некорректный ID задачи.');
+    }
+
+    if (!$id || !ctype_digit($id) || $id <= 0) {
+        die('ID должен быть положительным целым числом.');
     }
 
     $pdo = getPDO();

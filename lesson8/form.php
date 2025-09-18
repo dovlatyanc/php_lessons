@@ -1,12 +1,14 @@
 <?php
+require_once 'config.php';
+require_once 'Task.php';
 
-function showForm(array $task, bool $isNew): void {
+function showForm(Task $task, bool $isNew): void {
     $csrfToken = generateCsrfToken();
     ?>
     <form action="<?= $isNew ? 'insert.php' : 'update.php' ?>" method="post">
         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken) ?>" />
         <?php if (!$isNew): ?>
-            <input type="hidden" name="id" value="<?= htmlspecialchars($task['id']) ?>" />
+            <input type="hidden" name="id" value="<?= htmlspecialchars($task->id ?? '') ?>" />
         <?php endif; ?>
 
         <div>
@@ -14,7 +16,7 @@ function showForm(array $task, bool $isNew): void {
             <input type="text" 
                    id="name" 
                    name="name" 
-                   value="<?= htmlspecialchars($task['name'] ?? '') ?>" 
+                   value="<?= htmlspecialchars($task->name ?? '') ?>" 
                    required />
         </div>
 
@@ -23,7 +25,7 @@ function showForm(array $task, bool $isNew): void {
             <input type="date" 
                    id="due" 
                    name="due" 
-                   value="<?= htmlspecialchars($task['due'] ?? '') ?>" />
+                   value="<?= htmlspecialchars($task->due ?? '') ?>" />
         </div>
 
         <div>
@@ -33,7 +35,7 @@ function showForm(array $task, bool $isNew): void {
                    name="priority" 
                    min="1" 
                    max="5" 
-                   value="<?= htmlspecialchars($task['priority'] ?? '') ?>" 
+                   value="<?= htmlspecialchars($task->priority ?? '') ?>" 
                    required />
         </div>
 
@@ -43,7 +45,7 @@ function showForm(array $task, bool $isNew): void {
                     <textarea id="description" 
                         name="description" 
                         rows="4" 
-                        cols="50"><?= htmlspecialchars($task['description'] ?? '') ?></textarea>
+                        cols="50"><?= htmlspecialchars($task->description ?? '') ?></textarea>
                 </div>
         </div>
 
