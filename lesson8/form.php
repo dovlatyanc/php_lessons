@@ -29,14 +29,22 @@ function showForm(Task $task, bool $isNew): void {
         </div>
 
         <div>
-            <label for="priority">Приоритет (1–5):</label>
-            <input type="number" 
-                   id="priority" 
-                   name="priority" 
-                   min="1" 
-                   max="5" 
-                   value="<?= htmlspecialchars($task->priority ?? '') ?>" 
-                   required />
+            <label for="urgencyId">Срочность:</label>
+            <select id="urgencyId" name="urgencyId" required>
+                <?php
+
+                $pdo = getPDO();
+                $stmt = $pdo->query("SELECT id, name FROM urgency ORDER BY id ASC");
+                $urgencies = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($urgencies as $urgency):
+                ?>
+                    <option value="<?= $urgency['id'] ?>" 
+                        <?= (isset($task->urgencyId) && $task->urgencyId == $urgency['id']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($urgency['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
 
         <div>

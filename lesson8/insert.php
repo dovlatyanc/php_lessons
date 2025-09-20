@@ -12,16 +12,16 @@ if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
 
 $name = trim($_POST['name'] ?? '');
 $due = $_POST['due'] ?? '';
-$priority = (int)($_POST['prioryty'] ?? 1);
+$urgencyId = (int)($_POST['urgencyId'] ?? 1);
 $description = trim($_POST['description'] ?? '');
 
-if (!$name || $priority < 1 || $priority > 5) {
+if (!$name || $urgencyId < 1 || $urgencyId > 3) {
     die('Некорректные данные.');
 }
 
 $pdo = getPDO();
-$stmt = $pdo->prepare('INSERT INTO tasks (name, due, prioryty, description) VALUES (?, ?, ?, ?)');
-$stmt->execute([$name, $due, $priority, $description]);
+$stmt = $pdo->prepare('INSERT INTO tasks (name, due, urgencyId, description) VALUES (?, ?, ?, ?)');
+$stmt->execute([$name, $due, $urgencyId, $description]);
 
 header('Location: index.php');
 

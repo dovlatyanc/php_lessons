@@ -15,7 +15,7 @@ if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
 $id = $_POST['id'] ?? null;
 $name = trim($_POST['name'] ?? '');
 $due = $_POST['due'] ?? '';
-$priority = (int)($_POST['prioryty'] ?? 1);
+$priority = (int)($_POST['urgencyId'] ?? 1);
 $description = trim($_POST['description'] ?? '');
 
 
@@ -25,7 +25,7 @@ if (!$id || !$name || $priority < 1 || $priority > 5) {
 
 $pdo = getPDO();
 
-$stmt = $pdo->prepare('UPDATE tasks SET name = ?, due = ?, prioryty = ?, description = ? WHERE id = ?');
+$stmt = $pdo->prepare('UPDATE tasks SET name = ?, due = ?, urgencyId = ?, description = ? WHERE id = ?');
 
 $stmt->execute([$name, $due, $priority, $description, $id]);//безопасное заполнение
 
