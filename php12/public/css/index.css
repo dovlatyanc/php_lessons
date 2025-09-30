@@ -1,0 +1,61 @@
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+.confirm-box { 
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9; 
+}
+
+input[type="submit"] {
+    background: #03c100;
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    border-radius: 4px;
+}
+
+.high {
+    background-color: #e43c4a;
+    color: #fcfcfc;
+    border: 1px solid #f5c6cb;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.medium {
+    background-color: #fed448;
+    color: #000000;
+    border: 1px solid #ffeaa7;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.low {
+    background-color: #43ff6f;
+    color: #000000;
+    border: 1px solid #c3e6cb;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: bold;
+}
+ .color-preview {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
