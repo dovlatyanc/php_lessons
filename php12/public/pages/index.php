@@ -24,7 +24,7 @@ if (!isset($_SESSION['userId'])) {
 
     <!-- показывается только админу -->
     <?php if (in_array(3, $_SESSION['roles'] ?? [])): ?>
-        <p><a href="manage_urgency.php">⚙️ Управление уровнями срочности</a></p>
+        <p><a href="manage_urgency.php">⚙️ Админка</a></p>
     <?php endif; ?>
 
     
