@@ -65,7 +65,9 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
         <div>
             <input type="submit" value="Войти">
         </div>
+         <p><a href="register.php">Нет аккаунта? Зарегистрироваться</a></p>
     </form>
+    
        
     
 </body>
